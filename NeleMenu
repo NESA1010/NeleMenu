@@ -1,0 +1,110 @@
+@echo off
+
+:start
+cls
+title Welcome to the Menu %username%
+Color C
+echo [INFO] Welcome to the Menu
+echo [INFO] The Password is Nele
+echo [INFO] I am not responsible if your PC is damaged.
+echo.
+echo.
+echo                                                                                                     [Made By Nele]
+echo 1) next
+set /p start=choose: 
+if %start% == 1 goto Password
+goto start
+
+:Password
+cls
+title Enter the password here
+echo set speechobject=createobject("sapi.spvoice") >%userprofile%\AppData\Local\Temp\welcome.vbs
+echo dim speechobject >>%userprofile%\AppData\Local\Temp\welcome.vbs
+echo speechobject.speak "Welcome %username%" >>%userprofile%\AppData\Local\Temp\welcome.vbs
+timeout 1 >NUL
+start %userprofile%\AppData\Local\Temp\welcome.vbs
+timeout 1 >NUL
+del %userprofile%\AppData\Local\Temp\welcome.vbs
+color F
+set /p Password=Passwort: 
+if %Password% == Nele goto Menu
+echo wrong
+pause
+goto Password
+
+:Menu
+cls
+title Welcome %username%
+echo 1) IP Info
+echo 2) System Info
+echo 3) Websites
+echo 4) Goodbye
+echo.
+echo.
+echo                                                                                                     [Made By Nele]
+set /p Menu=choose: 
+if %Menu% == 1 goto IP
+if %Menu% == 2 goto System
+if %Menu% == 3 goto Websites
+if %Menu% == 4 goto Goodbye
+goto Menu
+
+:IP
+cls
+title Welcome %username%
+ipconfig
+echo.
+echo.
+echo 1) close
+echo                                                                                                     [Made By Nele]
+set /p IP=choose: 
+if %IP% == 1 goto Menu
+goto IP
+
+:System
+cls
+title Welcome %username%
+systeminfo
+echo.
+echo.
+echo 1) close
+echo                                                                                                     [Made By Nele]
+set /p System=Choose: 
+if %System% == 1 goto Menu
+goto System
+
+:Websites
+cls
+title Welcome %username%
+echo 1) Github of the Head from Trash Gang
+echo 2) close
+echo.
+echo.
+echo                                                                                                     [Made By Nele]
+set /p Websites=choose: 
+if %Websites% == 1 start https://github.com/ANGECRACKT
+if %Websites% == 2 goto Menu
+goto Websites
+
+:Goodbye
+cls
+title Goodbye %username%
+Color C
+echo Closeing Menu .
+timeout 1 >NUL
+cls
+echo Closeing Menu ..
+timeout 1 >NUL
+cls
+echo Closeing Menu ...
+timeout 1 >NUL
+cls
+echo Closeing Menu .
+echo set speechobject=createobject("sapi.spvoice") >%userprofile%\AppData\Local\Temp\welcome.vbs
+echo dim speechobject >>%userprofile%\AppData\Local\Temp\welcome.vbs
+echo speechobject.speak "Goodbye %username%" >>%userprofile%\AppData\Local\Temp\welcome.vbs
+timeout 1 >NUL
+start %userprofile%\AppData\Local\Temp\welcome.vbs
+timeout 1 >NUL
+del %userprofile%\AppData\Local\Temp\welcome.vbs
+goto exit
